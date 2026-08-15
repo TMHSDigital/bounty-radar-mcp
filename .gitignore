@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+cdp_api_key.json
+data/
+.DS_Store
+Thumbs.db
+*.log

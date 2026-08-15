@@ -1,0 +1,14 @@
+{
+  "accent": "#7c3aed",
+  "accentLight": "#a78bfa",
+  "heroGradientFrom": "#0d1117",
+  "heroGradientTo": "#161b22",
+  "links": {
+    "github": "https://github.com/TMHSDigital/bounty-radar-mcp"
+  },
+  "installSteps": [
+    "Install with <code>npx -y @tmhs/bounty-radar-mcp</code>",
+    "Add to your Claude Desktop or Cursor mcpServers config",
+    "Restart your MCP client"
+  ]
+}

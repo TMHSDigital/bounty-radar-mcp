@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Use Node.js 22
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+
+  safety-scan:
+    name: Public-repo safety scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: No business email leak
+        run: |
+          # Character class so this workflow file does not match itself.
+          if grep -rnE --include='*.py' --include='*.ts' --include='*.js' --include='*.mjs' --include='*.md' --include='*.j2' --include='*.json' --include='*.html' --include='*.yml' --include='*.yaml' "tmhospitalitystrateg[i]es" . ; then
+            echo "::error::Remove the real business email. Use a GitHub noreply address or a placeholder."
+            exit 1
+          fi
+
+      - name: No local filesystem paths
+        run: |
+          if grep -rnE --include='*.md' --include='*.ts' --include='*.js' --include='*.mjs' --include='*.json' --include='*.yml' --include='*.yaml' --include='*.html' --include='*.sh' '(^|[^A-Za-z0-9])[A-Z]:[\\/]' . ; then
+            echo "::error::Windows drive-letter paths leaked. Replace with relative paths or <repo-root>."
+            exit 1
+          fi
+          if grep -rnE --include='*.md' --include='*.ts' --include='*.js' --include='*.json' '/Users/[A-Za-z0-9_-]+/|/home/[A-Za-z0-9_-]+/' . ; then
+            echo "::error::Home directory paths leaked. Replace with generic paths."
+            exit 1
+          fi
+
+      - name: No private keys or authorization tokens
+        run: |
+          if grep -rnE --include='*.ts' --include='*.js' --include='*.mjs' --include='*.md' --include='*.json' --include='*.yml' --include='*.yaml' --include='*.html' --include='*.sh' 'BEGIN .{0,32}PRIVAT[E] KEY' . ; then
+            echo "::error::Private key header found in tracked files."
+            exit 1
+          fi
+          if grep -rnE --include='*.ts' --include='*.js' --include='*.mjs' --include='*.md' --include='*.json' --include='*.yml' --include='*.yaml' --include='*.html' --include='*.sh' 'Bear[e]r ' . ; then
+            echo "::error::Authorization token string found in tracked files."
+            exit 1
+          fi
+
+      - name: No committed secrets
+        run: |
+          if git ls-files | grep -E '(^|/)\.env$|(^|/)\.env\.[^.]|(^|/)cdp_api_key\.json$|\.pem$|\.key$|\.p12$' ; then
+            echo "::error::Credential file committed. Remove and rotate any exposed secret."
+            exit 1
+          fi

@@ -1,0 +1,51 @@
+{
+  "name": "@tmhs/bounty-radar-mcp",
+  "version": "0.1.0",
+  "description": "Paid MCP server exposing a GitHub bounty radar tool. One tool, github_bounty_radar, priced at $0.05 USDC on Base and settled over x402 via the CDP facilitator.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "bounty-radar-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "prepare": "node scripts/install-hooks.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "TMHSDigital",
+  "license": "CC-BY-NC-ND-4.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TMHSDigital/bounty-radar-mcp.git"
+  },
+  "homepage": "https://github.com/TMHSDigital/bounty-radar-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/TMHSDigital/bounty-radar-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "x402",
+    "bounty",
+    "base",
+    "developer-tools"
+  ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

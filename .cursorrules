@@ -1,0 +1,17 @@
+# Bounty Radar MCP
+
+This is an mcp-server repository for Bounty Radar MCP development.
+
+## Project structure
+
+- `src/` -- TypeScript HTTP server
+- `test/` -- Offline vitest suite
+- `package.json` -- npm package manifest
+
+## Conventions
+
+- Use conventional commits (feat:, fix:, chore:, docs:)
+- Bump the version in package.json in your PR; CI tags and publishes it
+- Keep mcp-tools.json in sync with the registered tools
+- HTTP transport, not stdio. Bazaar cannot call stdio.
+- No hardcoded credentials, drive-letter paths, or wallet provisioning

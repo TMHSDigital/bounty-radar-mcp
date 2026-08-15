@@ -4,7 +4,13 @@ All notable changes to Bounty Radar MCP will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [0.5.1] - Unreleased
+## [0.5.2] - Unreleased
+
+### Fixed
+
+- Safety scan reports every rule independently (`if: always()`), and `prepare` sets local `core.hooksPath` outside CI
+
+## [0.5.1] - 2026-08-15
 
 ### Fixed
 

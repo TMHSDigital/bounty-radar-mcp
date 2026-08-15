@@ -30,8 +30,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        id: checkout
 
       - name: No business email leak
+        if: ${{ always() && steps.checkout.conclusion == 'success' }}
         run: |
           # Character class so this workflow file does not match itself.
           if grep -rnE --include='*.py' --include='*.ts' --include='*.js' --include='*.mjs' --include='*.md' --include='*.j2' --include='*.json' --include='*.html' --include='*.yml' --include='*.yaml' "tmhospitalitystrateg[i]es" . ; then
@@ -39,29 +41,40 @@ jobs:
             exit 1
           fi
 
-      - name: No local filesystem paths
+      - name: No drive-letter paths
+        if: ${{ always() && steps.checkout.conclusion == 'success' }}
         run: |
           if grep -rnE --include='*.md' --include='*.ts' --include='*.js' --include='*.mjs' --include='*.json' --include='*.yml' --include='*.yaml' --include='*.html' --include='*.sh' '(^|[^A-Za-z0-9])[A-Z]:[\\/]' . ; then
             echo "::error::Windows drive-letter paths leaked. Replace with relative paths or <repo-root>."
             exit 1
           fi
+
+      - name: No home-directory paths
+        if: ${{ always() && steps.checkout.conclusion == 'success' }}
+        run: |
           if grep -rnE --include='*.md' --include='*.ts' --include='*.js' --include='*.json' '/Users/[A-Za-z0-9_-]+/|/home/[A-Za-z0-9_-]+/' . ; then
             echo "::error::Home directory paths leaked. Replace with generic paths."
             exit 1
           fi
 
-      - name: No private keys or authorization tokens
+      - name: No private key headers
+        if: ${{ always() && steps.checkout.conclusion == 'success' }}
         run: |
           if grep -rnE --include='*.ts' --include='*.js' --include='*.mjs' --include='*.md' --include='*.json' --include='*.yml' --include='*.yaml' --include='*.html' --include='*.sh' 'BEGIN .{0,32}PRIVAT[E] KEY' . ; then
             echo "::error::Private key header found in tracked files."
             exit 1
           fi
+
+      - name: No authorization tokens
+        if: ${{ always() && steps.checkout.conclusion == 'success' }}
+        run: |
           if grep -rnE --include='*.ts' --include='*.js' --include='*.mjs' --include='*.md' --include='*.json' --include='*.yml' --include='*.yaml' --include='*.html' --include='*.sh' 'Bear[e]r ' . ; then
             echo "::error::Authorization token string found in tracked files."
             exit 1
           fi
 
       - name: No committed secrets
+        if: ${{ always() && steps.checkout.conclusion == 'success' }}
         run: |
           if git ls-files | grep -E '(^|/)\.env$|(^|/)\.env\.[^.]|(^|/)cdp_api_key\.json$|\.pem$|\.key$|\.p12$' | grep -vE '(^|/)\.env\.example$' ; then
             echo "::error::Credential file committed. Remove and rotate any exposed secret."

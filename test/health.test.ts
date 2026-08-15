@@ -18,7 +18,7 @@ describe("GET /health", () => {
   });
 
   async function start(): Promise<number> {
-    server = createServer();
+    server = createServer({ log: () => undefined });
     await new Promise<void>((resolve) => {
       server!.listen(0, "127.0.0.1", () => resolve());
     });
@@ -34,9 +34,13 @@ describe("GET /health", () => {
     expect(Object.keys(body as object)).toEqual(["ok"]);
   });
 
-  it("does not register any MCP tool surface on other paths", async () => {
+  it("does not echo version or env on /health", async () => {
     const port = await start();
-    const res = await fetch(`http://127.0.0.1:${port}/mcp`);
-    expect(res.status).toBe(404);
+    const res = await fetch(`http://127.0.0.1:${port}/health`);
+    const text = await res.text();
+    expect(text).toBe(JSON.stringify({ ok: true }));
+    expect(text).not.toMatch(/0\.\d+\.\d+/);
+    expect(text).not.toMatch(/CDP_/);
+    expect(text).not.toMatch(/GITHUB_/);
   });
 });

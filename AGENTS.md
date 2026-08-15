@@ -10,7 +10,7 @@ This file tells AI coding agents how the Bounty Radar MCP repo works and how to 
 
 This is an MCP server. It contains:
 
-- **`src/`** -- TypeScript HTTP server. Unpaid `GET /health` is the only HTTP route.
+- **`src/`** -- TypeScript Streamable HTTP server. Unpaid `GET /health` plus MCP at `/mcp`.
 - **`src/radar.ts`** -- GitHub bounty search, reward parse, filters, cache. No payment code.
 - **`src/paid.ts`** -- x402 wrapper, canonical payTo guard, fetch-after-verify, abort-before-settle
 - **`src/facilitator.ts`** -- CDP facilitator client using `@coinbase/cdp-sdk/auth` JWTs. Do not import `@coinbase/cdp-sdk/x402`.

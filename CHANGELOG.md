@@ -4,7 +4,13 @@ All notable changes to Bounty Radar MCP will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [0.5.2] - Unreleased
+## [0.5.3] - Unreleased
+
+### Changed
+
+- Dependabot ignores vitest major bumps (lockfile/`npm ci` breakage on 3 to 4)
+
+## [0.5.2] - 2026-08-15
 
 ### Fixed
 

@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "name": "github_bounty_radar",
+    "description": "Call when you need open GitHub issues with a parsed USD bounty (Algora/$/USD in title or labels). Optional minUsd and q filter the list. Not a generic GitHub search clone.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "minUsd": {
+          "type": "number",
+          "description": "Minimum parsed USD reward. Omit to include unpriced issues."
+        },
+        "q": {
+          "type": "string",
+          "description": "Case-insensitive substring match on title and url."
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "title": "docs: fix README typo $25",
+      "html_url": "https://github.com/acme/repo/issues/1",
+      "labels": [{ "name": "bounty" }]
+    },
+    {
+      "title": "feat: add widget",
+      "html_url": "https://github.com/acme/repo/issues/2",
+      "labels": [{ "name": "bounty" }, { "name": "algora:$80" }]
+    },
+    {
+      "title": "chore: unpriced cleanup",
+      "html_url": "https://github.com/acme/special-name/issues/3",
+      "labels": [{ "name": "bounty" }]
+    },
+    {
+      "title": "fix: timeout 15 USD",
+      "html_url": "https://github.com/acme/repo/issues/4",
+      "labels": ["bounty"]
+    }
+  ]
+}

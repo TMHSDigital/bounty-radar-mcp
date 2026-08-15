@@ -10,7 +10,8 @@ This file tells AI coding agents how the Bounty Radar MCP repo works and how to 
 
 This is an MCP server. It contains:
 
-- **`src/`** -- TypeScript HTTP server. Phase 1 surface is unpaid `GET /health` only.
+- **`src/`** -- TypeScript HTTP server. Unpaid `GET /health` is the only HTTP route.
+- **`src/radar.ts`** -- GitHub bounty search, reward parse, filters, cache. No payment code.
 - **`test/`** -- Offline vitest tests. No live facilitator, no live GitHub, no wallet writes.
 - **`package.json`** -- npm package manifest (version source of truth)
 - **`mcp-tools.json`** -- enumerates the MCP tools this server exposes (empty until the paid tool is wired)

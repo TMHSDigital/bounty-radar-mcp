@@ -2,7 +2,7 @@
 
 # Roadmap
 
-**Current:** v0.1.0
+**Current:** v0.2.0
 
 ## Bounty Radar MCP
 
@@ -11,7 +11,7 @@
 - [x] Repo scaffold from Developer-Tools-Directory at STANDARDS_VERSION 1.10.0
 - [x] Unpaid `GET /health` returning `{ ok: true }`
 - [x] CI, drift-check, publish, pages, stale, label-sync
-- [ ] Radar core (GitHub search, reward parse, filters) with offline tests
+- [x] Radar core (GitHub search, reward parse, filters) with offline tests
 - [ ] x402 payment wrapper over MCP, CDP facilitator, fail-closed before settle
 - [ ] Streamable HTTP transport, container image, env example
 - [ ] Bazaar verification harness and deploy notes

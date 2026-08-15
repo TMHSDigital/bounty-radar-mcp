@@ -2,6 +2,8 @@
 import { pathToFileURL } from "node:url";
 import { createServer } from "./server.js";
 
+export { fetchRadar, filterRadar, parseReward, runRadar } from "./radar.js";
+
 const DEFAULT_PORT = 3000;
 
 export function listenPort(): number {

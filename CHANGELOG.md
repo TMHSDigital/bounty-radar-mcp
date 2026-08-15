@@ -4,7 +4,13 @@ All notable changes to Bounty Radar MCP will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [0.3.0] - Unreleased
+## [0.4.0] - Unreleased
+
+### Added
+
+- Streamable HTTP transport on `/mcp`, Express trust proxy, non-root Node 22 Dockerfile, and `.env.example`
+
+## [0.3.0] - 2026-08-15
 
 ### Added
 

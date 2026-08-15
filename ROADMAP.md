@@ -2,7 +2,7 @@
 
 # Roadmap
 
-**Current:** v0.3.0
+**Current:** v0.4.0
 
 ## Bounty Radar MCP
 
@@ -13,7 +13,7 @@
 - [x] CI, drift-check, publish, pages, stale, label-sync
 - [x] Radar core (GitHub search, reward parse, filters) with offline tests
 - [x] x402 payment wrapper over MCP, CDP facilitator, fail-closed before settle
-- [ ] Streamable HTTP transport, container image, env example
+- [x] Streamable HTTP transport, container image, env example
 - [ ] Bazaar verification harness and deploy notes
 
 ### v0.2.0 -- Expansion

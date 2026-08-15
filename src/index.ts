@@ -4,6 +4,7 @@ import { createServer } from "./server.js";
 
 export { fetchRadar, filterRadar, parseReward, runRadar } from "./radar.js";
 export { createMcpServer } from "./mcp.js";
+export { createApp, createServer } from "./server.js";
 export { PAY_TO, NETWORK, assertCanonicalPayTo } from "./payto.js";
 
 const DEFAULT_PORT = 3000;

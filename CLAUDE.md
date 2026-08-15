@@ -8,14 +8,15 @@ This file provides guidance for Claude Code when working in this repository.
 
 Bounty Radar MCP -- Paid MCP server exposing a GitHub bounty radar tool. One tool, github_bounty_radar, priced at $0.05 USDC on Base and settled over x402 via the CDP facilitator.
 
-**Version:** 0.1.0
+**Version:** 0.2.0
 **License:** CC-BY-NC-ND-4.0
 **Author:** TMHSDigital
 
 ## Key paths
 
 - Source: `src/` (TypeScript HTTP server; `GET /health` is the current surface)
-- Tests: `test/` (offline vitest)
+- Radar core: `src/radar.ts` (GitHub search, reward parse, minUsd/q filters, 5-minute cache)
+- Tests: `test/` (offline vitest, fixture-backed radar tests)
 - Package manifest: `package.json` (version source of truth)
 - Tool list: `mcp-tools.json` (enumerates the MCP tools)
 - Docs site: `docs/`

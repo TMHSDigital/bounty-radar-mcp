@@ -3,12 +3,12 @@
 **Paid MCP server exposing a GitHub bounty radar tool. One tool, `github_bounty_radar`, priced at $0.05 USDC on Base and settled over x402 via the CDP facilitator.**
 
 ![License: CC-BY-NC-ND-4.0](https://img.shields.io/badge/license-CC--BY--NC--ND--4.0-green)
-![Version](https://img.shields.io/badge/version-0.1.0-blue)
+![Version](https://img.shields.io/badge/version-0.2.0-blue)
 [![CI](https://github.com/TMHSDigital/bounty-radar-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/TMHSDigital/bounty-radar-mcp/actions/workflows/ci.yml)
 
 This server speaks Streamable HTTP, not stdio. Bazaar cannot call stdio, so HTTP is required for discovery and paid tool calls.
 
-The current surface is unpaid `GET /health`, which returns `{ "ok": true }` and nothing else. The paid tool is not registered yet.
+The current HTTP surface is unpaid `GET /health`, which returns `{ "ok": true }` and nothing else. The paid MCP tool is not registered yet. Radar fetch, reward parsing, and filters live in `src/radar.ts` and are covered by offline fixture tests.
 
 Credentials (CDP API key id/secret, optional GitHub token) are supplied by the deployment environment. This repo does not create a hosted CDP wallet.
 

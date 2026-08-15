@@ -4,7 +4,13 @@ All notable changes to Bounty Radar MCP will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [0.4.0] - Unreleased
+## [0.5.0] - Unreleased
+
+### Added
+
+- Bazaar merchant listing script and deploy checklist (health, unpaid 402, non-treasury settle)
+
+## [0.4.0] - 2026-08-15
 
 ### Added
 

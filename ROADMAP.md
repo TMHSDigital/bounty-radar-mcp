@@ -2,7 +2,7 @@
 
 # Roadmap
 
-**Current:** v0.4.0
+**Current:** v0.5.0
 
 ## Bounty Radar MCP
 
@@ -14,7 +14,7 @@
 - [x] Radar core (GitHub search, reward parse, filters) with offline tests
 - [x] x402 payment wrapper over MCP, CDP facilitator, fail-closed before settle
 - [x] Streamable HTTP transport, container image, env example
-- [ ] Bazaar verification harness and deploy notes
+- [x] Bazaar verification harness and deploy notes
 
 ### v0.2.0 -- Expansion
 

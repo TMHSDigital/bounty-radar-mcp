@@ -4,7 +4,13 @@ All notable changes to Bounty Radar MCP will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [0.5.0] - Unreleased
+## [0.5.1] - Unreleased
+
+### Fixed
+
+- Bazaar verify script and deploy checklist now reference `PAY_TO` instead of duplicating the treasury address
+
+## [0.5.0] - 2026-08-15
 
 ### Added
 

@@ -12,7 +12,8 @@ describe("verify-bazaar script", () => {
   it("calls listX402DiscoveryMerchant from the CDP SDK root with the canonical payTo", () => {
     expect(src).toContain('from "@coinbase/cdp-sdk"');
     expect(src).toContain("listX402DiscoveryMerchant");
-    expect(src).toContain(`payTo: "${PAY_TO}"`);
+    expect(src).toContain("payTo: PAY_TO");
+    expect(src).not.toContain(PAY_TO);
     expect(src).not.toContain("@coinbase/cdp-sdk/x402");
     expect(src).not.toContain("CDP_WALLET_SECRET");
     expect(src).not.toContain("createX402Server");
@@ -27,5 +28,8 @@ describe("DEPLOY.md", () => {
     expect(src).toContain("Never pass them as Docker build args");
     expect(src).toContain("non-treasury");
     expect(src).not.toContain("CDP_WALLET_SECRET");
+    expect(src).toContain("PAY_TO");
+    expect(src).toContain("src/payto.ts");
+    expect(src).not.toContain(PAY_TO);
   });
 });

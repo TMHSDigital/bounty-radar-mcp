@@ -34,4 +34,4 @@ Confirm listing:
 npx tsx scripts/verify-bazaar.ts
 ```
 
-The script calls `listX402DiscoveryMerchant` for `payTo` `0xC0a707F63df3120E018F119ddf44Fc8eAab40E72` and prints each resource. Expect an `mcp` entry for `github_bounty_radar` in addition to the HTTP radar URL.
+The script calls `listX402DiscoveryMerchant` with the compile-time `PAY_TO` constant from `src/payto.ts` and prints each resource. Expect an `mcp` entry for `github_bounty_radar` in addition to the HTTP radar URL.

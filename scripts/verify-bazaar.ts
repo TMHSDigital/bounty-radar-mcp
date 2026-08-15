@@ -5,7 +5,7 @@ import { PAY_TO } from "../src/payto.js";
 async function main(): Promise<void> {
   new CdpClient();
   const result = await listX402DiscoveryMerchant({
-    payTo: "0xC0a707F63df3120E018F119ddf44Fc8eAab40E72",
+    payTo: PAY_TO,
   });
   if (result.payTo.toLowerCase() !== PAY_TO.toLowerCase()) {
     throw new Error("merchant payTo does not match the canonical address");

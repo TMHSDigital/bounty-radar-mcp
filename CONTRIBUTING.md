@@ -29,6 +29,12 @@ Use [Conventional Commits](https://www.conventionalcommits.org/):
 
 Bump the version in `package.json` in your PR (e.g. `npm version <patch|minor|major> --no-git-tag-version`); CI tags and publishes it on merge.
 
+## Secret scanning
+
+The **authoritative** public-repo gate is the `Public-repo safety scan` job in CI. It is a required status check. A green scan on a clean tree is not proof the job is vacuous; the scan must fail on a canary. Do not treat a local pre-commit hook as sufficient protection.
+
+The hook in `.githooks/` is a **local fast-fail** only. `npm ci` / `npm install` runs `prepare`, which sets `core.hooksPath` to `.githooks` (and copies the hook into `.git/hooks` as a fallback). A fresh clone has **no hook until `npm ci`**. CI and Docker skip hook install (`CI`/`GITHUB_ACTIONS`, and `npm ci --ignore-scripts` in the image).
+
 ## Pull Request Process
 
 1. Ensure CI passes (`npm run build`, `npm test`, `npm run typecheck`)

@@ -14,6 +14,7 @@ This is an MCP server. It contains:
 - **`src/radar.ts`** -- GitHub bounty search, reward parse, filters, cache. No payment code.
 - **`src/paid.ts`** -- x402 wrapper, canonical payTo guard, fetch-after-verify, abort-before-settle
 - **`src/facilitator.ts`** -- CDP facilitator client using `@coinbase/cdp-sdk/auth` JWTs. Do not import `@coinbase/cdp-sdk/x402`.
+- **`scripts/verify-bazaar.ts`** -- lists Bazaar resources for the canonical payTo. Do not import `@coinbase/cdp-sdk/x402`.
 - **`test/`** -- Offline vitest tests. No live facilitator, no live GitHub, no wallet writes.
 - **`package.json`** -- npm package manifest (version source of truth)
 - **`mcp-tools.json`** -- enumerates the MCP tools this server exposes

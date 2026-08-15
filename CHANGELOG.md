@@ -4,7 +4,13 @@ All notable changes to Bounty Radar MCP will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [0.2.0] - Unreleased
+## [0.3.0] - Unreleased
+
+### Added
+
+- x402 payment wrapper for `github_bounty_radar` via the CDP facilitator, with a canonical payTo guard and fail-closed GitHub fetch
+
+## [0.2.0] - 2026-08-15
 
 ### Added
 

@@ -1,6 +1,6 @@
 {
   "name": "@tmhs/bounty-radar-mcp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Paid MCP server exposing a GitHub bounty radar tool. One tool, github_bounty_radar, priced at $0.05 USDC on Base and settled over x402 via the CDP facilitator.",
   "type": "module",
   "main": "dist/index.js",
@@ -41,6 +41,15 @@
   ],
   "engines": {
     "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "@coinbase/cdp-sdk": "1.55.0",
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "@x402/core": "2.22.0",
+    "@x402/evm": "2.22.0",
+    "@x402/extensions": "2.22.0",
+    "@x402/mcp": "2.22.0",
+    "zod": "3.25.76"
   },
   "devDependencies": {
     "@types/node": "^22.15.3",

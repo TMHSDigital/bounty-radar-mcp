@@ -1,0 +1,7 @@
+Bearer NOT_A_REAL_TOKEN_CANARY_DO_NOT_MERGE
+
+-----BEGIN RSA PRIVATE KEY-----
+CANARY_NOT_A_KEY_DO_NOT_MERGE
+-----END RSA PRIVATE KEY-----
+
+E:\canary\not-a-real-path

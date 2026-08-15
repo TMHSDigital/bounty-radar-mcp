@@ -63,7 +63,7 @@ jobs:
 
       - name: No committed secrets
         run: |
-          if git ls-files | grep -E '(^|/)\.env$|(^|/)\.env\.[^.]|(^|/)cdp_api_key\.json$|\.pem$|\.key$|\.p12$' ; then
+          if git ls-files | grep -E '(^|/)\.env$|(^|/)\.env\.[^.]|(^|/)cdp_api_key\.json$|\.pem$|\.key$|\.p12$' | grep -vE '(^|/)\.env\.example$' ; then
             echo "::error::Credential file committed. Remove and rotate any exposed secret."
             exit 1
           fi

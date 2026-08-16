@@ -1,9 +1,0 @@
-# Probe stub: satisfies required-workflows presence only. Does not publish.
-name: Publish stub
-on:
-  workflow_dispatch:
-jobs:
-  stub:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "probe stub; not a publish"

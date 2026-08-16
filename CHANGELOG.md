@@ -4,7 +4,13 @@ All notable changes to Bounty Radar MCP will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [0.5.4] - Unreleased
+## [0.5.5] - Unreleased
+
+### Changed
+
+- `prepublishOnly` exits 1 so `npm publish --dry-run` fails. npm 10/11 dry-run ignores `"private": true`.
+
+## [0.5.4] - 2026-08-16
 
 ### Changed
 

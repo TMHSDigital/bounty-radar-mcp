@@ -27,7 +27,7 @@ Use [Conventional Commits](https://www.conventionalcommits.org/):
 - Add it to `mcp-tools.json`
 - Add vitest tests that do not hit the live facilitator or live GitHub API
 
-Bump the version in `package.json` in your PR (e.g. `npm version <patch|minor|major> --no-git-tag-version`); CI tags and publishes it on merge.
+Bump the version in `package.json` in your PR (e.g. `npm version <patch|minor|major> --no-git-tag-version`); CI tags it on merge. This repo is a deployed service and is not published to npm.
 
 ## Secret scanning
 

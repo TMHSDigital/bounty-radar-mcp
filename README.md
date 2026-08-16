@@ -3,7 +3,7 @@
 **Paid MCP server exposing a GitHub bounty radar tool. One tool, `github_bounty_radar`, priced at $0.05 USDC on Base and settled over x402 via the CDP facilitator.**
 
 ![License: CC-BY-NC-ND-4.0](https://img.shields.io/badge/license-CC--BY--NC--ND--4.0-green)
-![Version](https://img.shields.io/badge/version-0.5.3-blue)
+![Version](https://img.shields.io/badge/version-0.5.4-blue)
 [![CI](https://github.com/TMHSDigital/bounty-radar-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/TMHSDigital/bounty-radar-mcp/actions/workflows/ci.yml)
 
 This server speaks Streamable HTTP, not stdio. Bazaar cannot call stdio, so HTTP is required for discovery and paid tool calls.
@@ -16,10 +16,16 @@ Request logs record method, path, status, and protocol. Headers are omitted. If 
 
 See [docs/DEPLOY.md](docs/DEPLOY.md) for the post-build checklist. This repo does not deploy itself. After the service is live, run `npm run verify:bazaar` to list Bazaar resources for the canonical `payTo`.
 
-## Installation
+## Run
+
+This is a deployed paid MCP service. It is not published to npm.
 
 ```bash
-npx -y @tmhs/bounty-radar-mcp
+git clone https://github.com/TMHSDigital/bounty-radar-mcp.git
+cd bounty-radar-mcp
+npm ci
+npm run build
+npm start
 ```
 
 Node 22 or newer is required. Bind address is `0.0.0.0`. Port comes from `PORT` (default 3000). `GET /health` is unpaid and returns `{ "ok": true }` only. MCP Streamable HTTP is `POST /mcp` (plus session `GET`/`DELETE`). Behind a TLS terminator, `trust proxy` is enabled so `req.protocol` is `https`.

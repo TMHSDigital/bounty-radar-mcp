@@ -9,7 +9,7 @@ describe("assertCanonicalPayTo", () => {
   });
 
   it("rejects any other address", () => {
-    expect(() => assertCanonicalPayTo("0x0000000000000000000000000000000000000001")).toThrow(
+    expect(() => assertCanonicalPayTo("0x000000000000000000000000000000000000dEaD")).toThrow(
       /payTo must be/,
     );
   });
@@ -19,7 +19,7 @@ describe("createPaidRadar payTo guard", () => {
   it("rejects a non-canonical payTo at construction", async () => {
     await expect(
       createPaidRadar({
-        payTo: "0x0000000000000000000000000000000000000001",
+        payTo: "0xffffffffffffffffffffffffffffffffffffffff",
         facilitator: forbiddenFacilitator(),
       }),
     ).rejects.toThrow(/payTo must be/);

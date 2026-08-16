@@ -26,7 +26,7 @@ Do not add stdio as the primary transport. Do not provision a CDP wallet. Do not
 ## Branching and commit model
 
 - **Single branch**: `main` only. No develop/release branches.
-- **Conventional commits** are required. Use them to decide your version bump, then apply it in your PR (`npm version <patch|minor|major> --no-git-tag-version`); `release.yml` tags and publishes that version on merge, and CI never writes to `main`:
+- **Conventional commits** are required. Use them to decide your version bump, then apply it in your PR (`npm version <patch|minor|major> --no-git-tag-version`); `release.yml` tags that version on merge, and CI never writes to `main`:
   - `feat:` or `feat(scope):` -- bump the **minor** version
   - `feat!:` or a `BREAKING CHANGE` trailer -- bump the **major** version
   - everything else (`fix:`, `chore:`, `docs:`) -- bump the **patch** version
@@ -44,11 +44,7 @@ Builds and runs the test suite on Node 22:
 
 ### `release.yml` (runs on push to main)
 
-Reads the version from `package.json` and, if there is no matching tag yet, pushes the `v<version>` tag (plus the floating `vMAJOR` and `vMAJOR.MINOR` tags), creates a GitHub Release, and dispatches `publish.yml`. It only pushes tags and never writes to `main`; bump the version in your PR.
-
-### `publish.yml` (runs on release published or workflow_dispatch)
-
-Publishes the package to npm.
+Reads the version from `package.json` and, if there is no matching tag yet, pushes the `v<version>` tag (plus the floating `vMAJOR` and `vMAJOR.MINOR` tags) and creates a GitHub Release. It only pushes tags and never writes to `main`; bump the version in your PR. This repo is a deployed service and is not published to npm.
 
 ### `drift-check.yml`
 
@@ -70,7 +66,7 @@ Keeps repository labels in sync.
 
 - The **source of truth** for the current version is `package.json`.
 - Bump it in your PR with `npm version <patch|minor|major> --no-git-tag-version` (keeps the lockfile in sync) and update the README badge, following conventional-commit intent.
-- On merge, `release.yml` tags that version and publishes it. `main` is protected and is never written to by CI.
+- On merge, `release.yml` tags that version. `main` is protected and is never written to by CI. This repo is not published to npm.
 
 ## Code conventions
 
@@ -97,6 +93,7 @@ These departures are intentional. Do not "fix" them back to the letter of the st
 1. **Tool naming.** [`standards/mcp-server.md`](https://github.com/TMHSDigital/Developer-Tools-Directory/blob/main/standards/mcp-server.md) requires `<tool-prefix>_<verbNoun>` in camelCase. This repo ships `github_bounty_radar`. The tool name is a market-facing identifier that Bazaar buyers discover on, and it must match the already-indexed HTTP listing. Wire compatibility wins over internal naming.
 2. **Destructive-operation rule.** [`standards/mcp-server.md`](https://github.com/TMHSDigital/Developer-Tools-Directory/blob/main/standards/mcp-server.md) classifies anything that moves money as destructive and requires a `confirm: boolean` parameter. `github_bounty_radar` is read-only against the GitHub API. Payment is a transport-level x402 concern initiated by the buyer's client, not an effect the tool produces. A `confirm` param would break the x402 retry loop. No `confirm` or `dry_run` is added.
 3. **Transport.** [`standards/mcp-server.md`](https://github.com/TMHSDigital/Developer-Tools-Directory/blob/main/standards/mcp-server.md) defaults to stdio and permits HTTP only when the server must run remotely, with the reason documented in the README. Bazaar cannot call stdio. This server uses Streamable HTTP.
+4. **No npm publish.** [`standards/ci-cd.md`](https://github.com/TMHSDigital/Developer-Tools-Directory/blob/main/standards/ci-cd.md) requires `publish.yml` for `mcp-server` repos. This is a deployed paid MCP service, not a library; there is no published artifact. `publish.yml` is absent, `package.json` is `"private": true`, and `release.yml` only tags GitHub Releases. Do not restore a publish workflow. `drift-check.yml` allows this single presence error and still fails the job on any other drift.
 
 ## License
 

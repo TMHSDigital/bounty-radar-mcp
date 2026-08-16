@@ -8,7 +8,7 @@ This file provides guidance for Claude Code when working in this repository.
 
 Bounty Radar MCP -- Paid MCP server exposing a GitHub bounty radar tool. One tool, github_bounty_radar, priced at $0.05 USDC on Base and settled over x402 via the CDP facilitator.
 
-**Version:** 0.5.3
+**Version:** 0.5.4
 **License:** CC-BY-NC-ND-4.0
 **Author:** TMHSDigital
 
@@ -26,7 +26,7 @@ Bounty Radar MCP -- Paid MCP server exposing a GitHub bounty radar tool. One too
 ## Conventions
 
 - Use conventional commits (`feat:`, `fix:`, `chore:`, `docs:`)
-- Bump the version in `package.json` in your PR (`npm version`, keeps the lockfile in sync); `release.yml` tags and publishes that version on merge
+- Bump the version in `package.json` in your PR (`npm version`, keeps the lockfile in sync); `release.yml` tags that version on merge. This repo is a deployed service and is not published to npm.
 - Keep `mcp-tools.json` in sync with the registered tools
 - Do not provision a CDP wallet or import `@coinbase/cdp-sdk/x402`
 - Do not call a paid HTTP radar from this process

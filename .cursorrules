@@ -11,7 +11,7 @@ This is an mcp-server repository for Bounty Radar MCP development.
 ## Conventions
 
 - Use conventional commits (feat:, fix:, chore:, docs:)
-- Bump the version in package.json in your PR; CI tags and publishes it
+- Bump the version in package.json in your PR; CI tags it. This is a deployed service, not an npm package.
 - Keep mcp-tools.json in sync with the registered tools
 - HTTP transport, not stdio. Bazaar cannot call stdio.
 - No hardcoded credentials, drive-letter paths, or wallet provisioning

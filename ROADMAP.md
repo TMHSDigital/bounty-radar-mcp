@@ -2,7 +2,7 @@
 
 # Roadmap
 
-**Current:** v0.5.4
+**Current:** v0.5.5
 
 ## Bounty Radar MCP
 

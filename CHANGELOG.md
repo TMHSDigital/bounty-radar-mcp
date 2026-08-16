@@ -4,7 +4,17 @@ All notable changes to Bounty Radar MCP will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [0.5.3] - Unreleased
+## [0.5.4] - Unreleased
+
+### Changed
+
+- Guard tests reject unmistakable placeholder addresses instead of `0x…0001`
+
+### Removed
+
+- npm publish path (`publish.yml`, `release.yml` dispatch, `prepublishOnly`); `package.json` is `"private": true`. This is a deployed service, not a library.
+
+## [0.5.3] - 2026-08-15
 
 ### Changed
 

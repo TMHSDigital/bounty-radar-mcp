@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  actions: write
 
 concurrency:
   group: release
@@ -20,8 +19,8 @@ jobs:
     steps:
       # The default GITHUB_TOKEN (contents: write) pushes tags and creates the
       # release. main is protected and is NEVER written to by CI; bump the
-      # version in your PR. A GITHUB_TOKEN release does not trigger publish.yml,
-      # so this job dispatches it explicitly afterward.
+      # version in your PR. This repo is a deployed service and does not
+      # publish to npm.
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
@@ -43,7 +42,7 @@ jobs:
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Tag, release, and trigger publish
+      - name: Tag and release
         if: steps.check.outputs.skip == 'false'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -60,6 +59,3 @@ jobs:
           git push origin "v$major" --force
           git push origin "v$major.$minor" --force
           gh release create "v$v" --title "v$v" --generate-notes
-          # publish.yml is idempotent (skips an already-published version), so a
-          # duplicate dispatch is harmless.
-          gh workflow run publish.yml --ref main

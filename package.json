@@ -1,6 +1,7 @@
 {
   "name": "@tmhs/bounty-radar-mcp",
-  "version": "0.5.3",
+  "version": "0.5.4",
+  "private": true,
   "description": "Paid MCP server exposing a GitHub bounty radar tool. One tool, github_bounty_radar, priced at $0.05 USDC on Base and settled over x402 via the CDP facilitator.",
   "type": "module",
   "main": "dist/index.js",
@@ -19,8 +20,7 @@
     "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts",
     "prepare": "node scripts/install-hooks.mjs",
-    "verify:bazaar": "tsx scripts/verify-bazaar.ts",
-    "prepublishOnly": "npm run build"
+    "verify:bazaar": "tsx scripts/verify-bazaar.ts"
   },
   "author": "TMHSDigital",
   "license": "CC-BY-NC-ND-4.0",

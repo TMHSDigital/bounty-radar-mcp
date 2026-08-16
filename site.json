@@ -7,8 +7,8 @@
     "github": "https://github.com/TMHSDigital/bounty-radar-mcp"
   },
   "installSteps": [
-    "Install with <code>npx -y @tmhs/bounty-radar-mcp</code>",
-    "Add to your Claude Desktop or Cursor mcpServers config",
+    "Clone the repo or deploy the Docker image. This service is not published to npm.",
+    "Point your MCP client at the Streamable HTTP endpoint",
     "Restart your MCP client"
   ]
 }

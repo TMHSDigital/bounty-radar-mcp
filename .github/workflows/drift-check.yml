@@ -16,6 +16,36 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: TMHSDigital/Developer-Tools-Directory/.github/actions/drift-check@v1.17
+        id: drift
+        continue-on-error: true
         with:
           mode: self
           format: gh-summary
+      - name: Fail on undocumented drift
+        env:
+          DRIFT_RC: ${{ steps.drift.outputs.exit-code }}
+          DRIFT_ERR: ${{ steps.drift.outputs.error-count }}
+        run: |
+          set -euo pipefail
+          if [ -z "${DRIFT_RC}" ]; then
+            echo "::error::drift checker did not report an exit code"
+            exit 2
+          fi
+          if [ "${DRIFT_RC}" = "0" ]; then
+            echo "no drift detected"
+            exit 0
+          fi
+          if [ "${DRIFT_RC}" = "2" ]; then
+            echo "::error::drift checker tool error"
+            exit 2
+          fi
+          # Documented deviation (AGENTS.md #4): mcp-server repos require
+          # publish.yml, but this is a deployed service with no artifact.
+          # Presence-only checker emits exactly one error when that file is
+          # absent. Any other drift, or a second error, still fails the job.
+          if [ ! -f .github/workflows/publish.yml ] && [ "${DRIFT_RC}" = "1" ] && [ "${DRIFT_ERR}" = "1" ]; then
+            echo "allowing documented absence of publish.yml (AGENTS.md standards deviation 4)"
+            exit 0
+          fi
+          echo "::error::unexpected drift (exit-code=${DRIFT_RC} error-count=${DRIFT_ERR})"
+          exit 1

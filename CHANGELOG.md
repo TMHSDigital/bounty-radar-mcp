@@ -4,7 +4,13 @@ All notable changes to Bounty Radar MCP will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [0.5.6] - Unreleased
+## [0.5.7] - Unreleased
+
+### Changed
+
+- Drift check uses the stock composite at `@v1.19`. The publish.yml allowance and AGENTS.md deviation 4 are gone; `.drift-check.json` is the exemption.
+
+## [0.5.6] - 2026-08-16
 
 ### Added
 

@@ -8,7 +8,7 @@ This file provides guidance for Claude Code when working in this repository.
 
 Bounty Radar MCP -- Paid MCP server exposing a GitHub bounty radar tool. One tool, github_bounty_radar, priced at $0.05 USDC on Base and settled over x402 via the CDP facilitator.
 
-**Version:** 0.5.5
+**Version:** 0.5.6
 **License:** CC-BY-NC-ND-4.0
 **Author:** TMHSDigital
 

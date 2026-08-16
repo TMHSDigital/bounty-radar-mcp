@@ -1,6 +1,6 @@
 {
   "name": "@tmhs/bounty-radar-mcp",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "private": true,
   "description": "Paid MCP server exposing a GitHub bounty radar tool. One tool, github_bounty_radar, priced at $0.05 USDC on Base and settled over x402 via the CDP facilitator.",
   "type": "module",

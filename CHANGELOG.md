@@ -4,7 +4,13 @@ All notable changes to Bounty Radar MCP will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [0.5.5] - Unreleased
+## [0.5.6] - Unreleased
+
+### Added
+
+- `.drift-check.json` declares the deployed-service archetype so the fleet checker can exempt `publish.yml` without a local allowance.
+
+## [0.5.5] - 2026-08-16
 
 ### Changed
 

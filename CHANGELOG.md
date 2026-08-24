@@ -4,6 +4,13 @@ All notable changes to Bounty Radar MCP will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.6.1] - 2026-08-24
+
+### Changed
+
+- `@x402/core`, `@x402/evm`, `@x402/mcp`, and `@x402/extensions` move together to `2.23.0` so TypeScript sees one core
+- vitest `3.2.7`
+
 ## [0.6.0] - 2026-08-24
 
 ### Added

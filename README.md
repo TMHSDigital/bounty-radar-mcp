@@ -3,7 +3,7 @@
 **Paid MCP server exposing a GitHub bounty radar tool. One tool, `github_bounty_radar`, priced at $0.05 USDC on Base and settled over x402 via the CDP facilitator.**
 
 ![License: CC-BY-NC-ND-4.0](https://img.shields.io/badge/license-CC--BY--NC--ND--4.0-green)
-![Version](https://img.shields.io/badge/version-0.5.7-blue)
+![Version](https://img.shields.io/badge/version-0.6.0-blue)
 [![CI](https://github.com/TMHSDigital/bounty-radar-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/TMHSDigital/bounty-radar-mcp/actions/workflows/ci.yml)
 
 This server speaks Streamable HTTP, not stdio. Bazaar cannot call stdio, so HTTP is required for discovery and paid tool calls.
@@ -15,6 +15,15 @@ Credentials (CDP API key id/secret, optional GitHub token) are supplied by the d
 Request logs record method, path, status, and protocol. Headers are omitted. If header logging is added later, names must be allowlisted.
 
 See [docs/DEPLOY.md](docs/DEPLOY.md) for the post-build checklist. This repo does not deploy itself. After the service is live, run `npm run verify:bazaar` to list Bazaar resources for the canonical `payTo`.
+
+## Live
+
+Public origin: [https://bounty-radar-mcp-production.up.railway.app](https://bounty-radar-mcp-production.up.railway.app)
+
+- Unpaid `GET /health` returns `{ "ok": true }`
+- MCP Streamable HTTP is `POST /mcp`
+- Tool: `github_bounty_radar` at `$0.05` USDC on Base
+- `payTo`: `0xC0a707F63df3120E018F119ddf44Fc8eAab40E72`
 
 ## Run
 
@@ -62,6 +71,7 @@ bounty-radar-mcp/
   test/               Offline vitest suite
   docs/               GitHub Pages site and deploy checklist
   Dockerfile          Node 22 image, non-root
+  railway.toml        Dockerfile builder and /health check
   .env.example        Empty credential names for local copies
   .github/            CI/CD workflows
   .githooks/          Pre-commit secret and path leak guard

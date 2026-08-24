@@ -2,6 +2,8 @@
 
 This document is the post-build checklist for Bounty Radar MCP. It does not deploy the service. You run these steps in the platform dashboard after the image or Node process is ready.
 
+Live origin: `https://bounty-radar-mcp-production.up.railway.app`
+
 ## Runtime
 
 The process listens on `0.0.0.0` and `PORT` (default 3000). MCP Streamable HTTP is `POST /mcp`. Unpaid `GET /health` returns `{ "ok": true }` only.
@@ -35,3 +37,12 @@ npx tsx scripts/verify-bazaar.ts
 ```
 
 The script calls `listX402DiscoveryMerchant` with the compile-time `PAY_TO` constant from `src/payto.ts` and prints each resource. Expect an `mcp` entry for `github_bounty_radar` in addition to the HTTP radar URL.
+
+Index ping (operator machine, not CI). Set `MCP_ORIGIN` to the live origin. For a paid call, set `BUYER_JSON` to a JSON file with `address` and `privateKey`. Do not commit that file. The buyer must not be `PAY_TO` from `src/payto.ts`.
+
+```bash
+npx tsx scripts/ping-mcp.ts --unpaid
+npx tsx scripts/ping-mcp.ts
+```
+
+`GITHUB_TOKEN` is optional. Without it, GitHub Search is 60 requests per hour; a rate-limit failure aborts settle so the buyer is not charged and gets no tool.

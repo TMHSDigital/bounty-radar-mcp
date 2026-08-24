@@ -4,7 +4,15 @@ All notable changes to Bounty Radar MCP will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [0.5.7] - Unreleased
+## [0.6.0] - 2026-08-24
+
+### Added
+
+- Operator ping script for a paid Streamable HTTP `github_bounty_radar` call
+- `railway.toml` so the container health-checks `/health` and restarts on failure
+- Safety scan for the sibling seller name using a split pattern
+
+## [0.5.7] - 2026-08-16
 
 ### Changed
 
